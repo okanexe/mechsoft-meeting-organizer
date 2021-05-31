@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="jumbotron">
+    <form method="post" id="meeting_form">
+        {% csrf_token %}
+        <p>
+            <label for="meeting_name">Meeting Name: </label><br>
+            <input type="text" name="meeting_name" placeholder="Meeting name is..."><br>
+        </p>
+
+        <p>
+            <label for="meeting_link">Meeting Link: </label><br>
+            <input type="text" name="meeting_link" placeholder="Link is..."><br>
+        </p>
+
+        <p>
+            <label for="start_time">Start Time: </label><br>
+            <input type="text" name="start_time" placeholder="Start Time is..."><br>
+        </p>
+
+        <p>
+            <label for="end_time">End Time: </label><br>
+            <input type="text" name="end_time" placeholder="End Time is..."><br>
+        </p>
+
+        <p>
+            <label for="meeting_day">Day: </label><br>
+            <input type="text" name="meeting_day" placeholder="Meeting Day is..."><br>
+        </p>
+
+        <p>
+            <label for="participants">Participants: </label><br>
+            <input type="text" name="participants" placeholder="Participants are..."><br>
+        </p>
+
+        <br>
+        <span>
+            <button type="submit" class="btn btn-warning">Add Meeting</button>
+        </span>
+
+    </form>
+
+</div>
+
+{% endblock content %}

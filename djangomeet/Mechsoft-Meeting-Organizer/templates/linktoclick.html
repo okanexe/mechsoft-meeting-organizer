@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div>
+    {% for meet in obj %}
+    
+        <p>
+            <h3>Current Meeting: <i><b>{{ meet.meeting_name }}</b></i></h3>
+            <h4>Start Time: {{ meet.start_time }}</h4>
+            <h4>End Time: {{ meet.end_time }}</h4>
+            <h4>Day: {{ meet.meeting_day }}</h4>
+            <h4>Participants: {{ meet.participants }}</h4>
+        </p>
+        <div class="jumbotron">
+
+            <span>
+                <p>
+                    <a href="{{ meet.meeting_link }}"><button type="button" class="btn btn-dark">Link to Join: <b>{{ meet.meeting_name}}</b></button></a>
+                </p>
+
+                <p>
+                    <a href="/admin/interface/meeting/{{ meet.id }}"><button type="button" class="btn btn-warning">Customize Meeting</button></a>
+                </p>
+
+            </span>
+
+            <p>
+                <form method="post" id="delete">
+                    {% csrf_token %}
+                    <a href=""><button type="submit" class="btn btn-danger">Delete This Meeting</button></a>
+                    <input type="hidden" name="delete" value= {{ meet.meeting_name }}>
+                </form>
+            </p>
+
+        </div>
+        
+    {% endfor %}
+</div>
+
+{% endblock content %}
